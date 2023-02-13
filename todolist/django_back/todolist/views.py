@@ -3,6 +3,7 @@ from .models import Todo
 from .serializers import TodoSerializer
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
 
 
 @csrf_exempt
@@ -44,3 +45,6 @@ def todolist_detail(request, pk):
         todo.delete()
         return JsonResponse({"Response": f"{todo.title} has been deleted"}, status=203)
 
+
+def redux_todolist(request):
+    return render(request, 'index.html')
