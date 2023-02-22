@@ -37,3 +37,6 @@ class Forecast:
             return "Empty response."
         finally:
             return "The weather.txt file has been created."
+
+
+Forecast('zhezkazgan').get_forecast()

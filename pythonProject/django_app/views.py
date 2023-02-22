@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
-import asyncio
 from django.views import View
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
+from django.core.cache.backends.locmem import LocMemCache
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -14,11 +14,11 @@ def json_index(request: HttpRequest) -> JsonResponse:
 
 
 def homepage(request: HttpRequest) -> HttpResponse:
+
     return render(request, 'index.html')
 
 
-class GetUsers(View):
+class GetUsers(View, LocMemCache):
     def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        # await asyncio.sleep(1)
         print(User.objects.filter(is_active=True))
         return HttpResponse("Hello World!")
