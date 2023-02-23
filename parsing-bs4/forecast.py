@@ -38,5 +38,3 @@ class Forecast:
         finally:
             return "The weather.txt file has been created."
 
-
-Forecast('zhezkazgan').get_forecast()
