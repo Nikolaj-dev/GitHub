@@ -7,4 +7,5 @@ urlpatterns = [
     path('json_api/', views.json_index),
     path('', views.GetUsers.as_view()),
     path('homepage/', views.homepage),
+    path('todos/', views.GetTodos.as_view()),
 ]
