@@ -1,3 +1,26 @@
 from django.contrib import admin
+from .models import Teacher
 
-# Register your models here.
+
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = (
+        'fullname',
+        'bio',
+        'lesson_price',
+        'language',
+    )
+    list_display_links = (
+        'fullname',
+    )
+    list_filter = (
+        'lesson_price',
+        'language',
+    )
+    search_fields = (
+        'fullname',
+        'lesson_price',
+        'language',
+    )
+
+
+admin.site.register(Teacher, TeacherAdmin)
