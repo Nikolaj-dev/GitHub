@@ -1,10 +1,22 @@
 {% extends 'everyone_in_touch/base.html' %}
-
+{% load static %}
 {% block title %}
 {% endblock %}
 
 
 {% block content %}
-    <h1>Welcome to the educational portal: Everyone in Touch!</h1>
-    <p>Welcome {{ request.user }}!</p>
+    <nav class="navbar bg-light">
+    {% if request.user.is_authenticated %}
+        <span>
+            Welcome {{ request.user }}!
+            <a href="{% url 'logout' %}">Logout</a>
+        </span>
+    {% else %}
+        <span>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'sign_up' %}">Sign Up</a>
+        </span>
+    {% endif %}
+    </nav>
+    <hr>
 {% endblock %}
