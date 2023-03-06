@@ -1,15 +1,34 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse, HttpRequest
 from django.contrib.auth.models import User
-
-
-def startpage(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('<h1>You see the startpage.</h1>')
+from django.views.generic import ListView, DetailView
+from .models import Teacher
 
 
 def homepage(request):
     return render(request, 'everyone_in_touch/homepage.html')
+
+
+class TeacherListView(ListView):
+    template_name = 'everyone_in_touch/teachers.html'
+    model = Teacher
+    paginate_by = 100
+    context_object_name = 'teachers'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class TeacherDetailView(DetailView):
+    model = Teacher
+    template_name = 'everyone_in_touch/teachers_detailed.html'
+    context_object_name = 'teacher'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 
 
 def login_(request):

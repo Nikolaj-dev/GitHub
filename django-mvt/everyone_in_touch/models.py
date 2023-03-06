@@ -17,18 +17,15 @@ class Teacher(models.Model):
         db_index=True,
     )
 
-    ENGLISH = 'ENG'
-    SPANISH = 'ES'
-    FRENCH = 'FR'
     LANGUAGE_CHOICES = [
-        (ENGLISH, 'ENGLISH'),
-        (SPANISH, 'SPANISH'),
-        (FRENCH, 'FRENCH'),
+        ('English', 'ENG'),
+        ('Spanish', 'ES'),
+        ('French', 'FR'),
     ]
     language = models.CharField(
-        max_length=3,
+        max_length=32,
         choices=LANGUAGE_CHOICES,
-        default=ENGLISH,
+        default='ENG'
     )
 
     class Meta:

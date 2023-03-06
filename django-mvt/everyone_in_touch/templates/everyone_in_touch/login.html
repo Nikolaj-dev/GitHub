@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    <div class="container text-center mt-3">
+    <div class="container text-center mt-3 border-1">
     <p>Welcome to the educational portal: Everyone in Touch!</p>
     <form action="{% url "login" %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -18,8 +18,8 @@
             Password:
             <input class="form-control" type="password" name="password" placeholder="Password" />
         </label><br>
-        <button class="btn btn-outline-success" type="submit">Login</button>
+        <button class="btn btn-outline-success bi bi-box-arrow-in-right" type="submit"> Login</button>
     </form>
-    <a href="{% url 'startpage' %}">Go back</a>
+
     </div>
 {% endblock %}

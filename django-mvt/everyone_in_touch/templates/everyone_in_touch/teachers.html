@@ -1,0 +1,22 @@
+{% extends 'everyone_in_touch/base.html' %}
+
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    {% for teacher in teachers %}
+    <div class="card text-center container mt-3" style="width: 36rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ teacher.fullname }}</h5>
+            <h6 class="card-subtitle">About me</h6>
+            <p class="card-text">{{ teacher.bio|truncatewords:58 }}</p>
+            <p><span class="text-danger">Price for a lesson: </span>{{ teacher.lesson_price }}$</p>
+            <p>Subject: {{ teacher.language }}</p>
+            <a href="{% url 'teacher' teacher.pk %}" class="btn btn-outline-info">see more</a>
+        </div>
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
