@@ -36,5 +36,16 @@
     {% block content %}
     {% endblock %}
 
+    {% block footer %}
+        <div class="container-fluid mt-3 mb-3">
+            <hr>
+            <span>
+                <a href="{% url 'about_us' %}">About us</a>
+                <p>Support:<br>8 000 880-88-00<br>nikolajpetrishchev@gmail.com</p>
+                <p class="text-center bi bi-patch-exclamation-fill text-danger">The information published on this website is intended for any audience, unless otherwise specified in relation to individual materials.</p>
+            </span>
+        </div>
+    {% endblock %}
+
 </body>
 </html>

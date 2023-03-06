@@ -30,7 +30,6 @@ class TeacherDetailView(DetailView):
         return context
 
 
-
 def login_(request):
     if request.method == 'POST':
         username = request.POST.get("username", "")
@@ -58,3 +57,7 @@ def sign_up(request):
 def logout_(request):
     logout(request)
     return redirect(reverse('homepage', args=()))
+
+
+def about_us(request):
+    return render(request, 'everyone_in_touch/about_us.html', context={})
