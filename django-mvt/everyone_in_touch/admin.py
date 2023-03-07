@@ -21,6 +21,7 @@ class TeacherAdmin(admin.ModelAdmin):
         'lesson_price',
         'language',
     )
+    prepopulated_fields = {'url': ('fullname', )}
 
 
 admin.site.register(Teacher, TeacherAdmin)

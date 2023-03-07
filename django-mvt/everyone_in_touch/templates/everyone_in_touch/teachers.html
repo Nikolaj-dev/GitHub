@@ -13,7 +13,7 @@
             <p class="card-text">{{ teacher.bio|truncatewords:58 }}</p>
             <p><span class="text-danger">Price for a lesson: </span>{{ teacher.lesson_price }}$</p>
             <p>Subject: {{ teacher.language }}</p>
-            <a href="{% url 'teacher' teacher.pk %}" class="btn btn-outline-info">see more</a>
+            <a href="{% url 'teacher' teacher.url %}" class="btn btn-outline-info">see more</a>
         </div>
     </div>
     {% endfor %}

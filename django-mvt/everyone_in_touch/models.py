@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Teacher(models.Model):
@@ -17,6 +18,8 @@ class Teacher(models.Model):
         db_index=True,
     )
 
+    url = models.SlugField()
+
     LANGUAGE_CHOICES = [
         ('English', 'ENG'),
         ('Spanish', 'ES'),
@@ -27,6 +30,10 @@ class Teacher(models.Model):
         choices=LANGUAGE_CHOICES,
         default='ENG'
     )
+
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.fullname)
+        super(Teacher, self).save(*args, **kwargs)
 
     class Meta:
         app_label = 'everyone_in_touch'

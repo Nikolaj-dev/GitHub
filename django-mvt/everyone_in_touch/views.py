@@ -24,6 +24,8 @@ class TeacherDetailView(DetailView):
     model = Teacher
     template_name = 'everyone_in_touch/teachers_detailed.html'
     context_object_name = 'teacher'
+    slug_field = 'url'
+    slug_url_kwarg = 'url'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 
@@ -8,6 +8,6 @@ urlpatterns = [
     path('logout/', views.logout_, name='logout'),
     path('sign_up/', views.sign_up, name='sign_up'),
     path('teachers/', views.TeacherListView.as_view(), name='teachers'),
-    path('teachers/<int:pk>', views.TeacherDetailView.as_view(), name='teacher'),
+    re_path(r'teachers/(?P<url>[-\w]+)/$', views.TeacherDetailView.as_view(), name='teacher'),
     path('about_us/', views.about_us, name='about_us'),
 ]
